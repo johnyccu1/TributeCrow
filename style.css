@@ -1,5 +1,5 @@
 * {
-    box-sizing: border-box;
+    box-sizing: border-box; /* 1. Include padding-ul si bordura in dimensiunea totala (nu o mareste) */
 }
 
 body {
@@ -25,12 +25,12 @@ h1 {
 /* Card Principal Container */
 .card {
     max-width: 960px;
-    margin: 0 auto 40px auto;
+    margin: 0 auto 40px auto; /* 3. TRBL: 0 sus, auto dreapta, 40px jos, auto stanga (auto stg+dr centreaza pe orizontala) */
     padding: 24px;
     background-color: #0e1217;
     border: 1px solid #283344;
     border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8); /* 4. X:0, Y:8px jos, blur:24px | rgba(R,G,B,Alpha): 0,0,0=negru, 0.8=opacitate 80% (20% transparent) */
     display: flex;
     gap: 24px;
     align-items: stretch;
@@ -44,7 +44,7 @@ h1 {
 
 /* Coloana Stânga: Căsuțele 1, 2, 4 */
 .card-left {
-    flex: 1;
+    flex: 1; /* 6. Ocupa tot spatiul ramas liber pe orizontala din card */
     display: flex;
     flex-direction: column;
     gap: 18px;
@@ -86,7 +86,7 @@ h1 {
 
 /* Buton link conform cerinței temei */
 .card-btn {
-    display: inline-block;
+    display: inline-block; /* 7. Accepta padding si dimensiuni de bloc, dar ramane in fluxul textului */
     padding: 7px 16px;
     background-color: #1e2837;
     color: #6cb0f0;
@@ -221,15 +221,15 @@ h1 {
 
 /* Coloana Dreapta: 3. Posterul sau img dreapta */
 .card-right {
-    width: 340px;
-    flex-shrink: 0;
+    width: 340px; /* 6. Latime fixa de 340px */
+    flex-shrink: 0; /* 6. Nu permite micsorarea sub 340px */
     display: flex;
 }
 
 .card-img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* 9. Umple cadrul fara sa distorsioneze/turteasca poza (decupeaza din margini) */
     border-radius: 8px;
     border: 1px solid #222b3a;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
@@ -243,18 +243,18 @@ h1 {
 }
 
 /* Responsivitate pentru ecrane mici */
-@media (max-width: 820px) {
+@media (max-width: 820px) { /* DECLANSATOR MOBIL: toate regulile de mai jos se aplica DOAR cand ecranul are sub 820px (telefon/tableta) */
     .card {
-        flex-direction: column;
-        max-width: 520px;
-        padding: 18px;
+        flex-direction: column; /* CUM SE DEPLASEAZA CARDURILE: schimba axa Flexbox de la orizontala la verticala; coloana stanga si posterul se muta una sub alta */
+        max-width: 520px;       /* MARIME CARD: reduce latimea maxima a cardului de la 960px la 520px ca sa incapa pe ecran ingust */
+        padding: 18px;          /* MARIME SPATIU: reduce spatiul interior de la 24px la 18px pentru a lasa mai mult loc continutului */
     }
 
     .card-right {
-        width: 100%;
+        width: 100%;            /* MARIME COLOANA POSTER: posterul renunta la latimea fixa de 340px si se intinde pe toata latimea ecranului (100%) */
     }
 
     .card-img {
-        height: 480px;
+        height: 480px;          /* MARIME IMAGINE: fixeaza inaltimea posterului la 480px pe mobil ca sa nu se micsoreze excesiv */
     }
 }
