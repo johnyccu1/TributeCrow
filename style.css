@@ -1,55 +1,222 @@
-.card {
-    max-width: 65%;
-    border: 1px solid #283344;
-    border-radius: 8px;
-    overflow: hidden;
-    margin: 20px auto;
-    color: #cfd6df;
-    background-color: #0e1217;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
-}
-
-.card:hover {
-    box-shadow: 0 8px 20px rgba(60, 85, 120, 0.35);
-}
-
-.card-content {
-    font-family: 'Gotham', sans-serif;
-    font-size: 16px;
-    padding: 16px;
-}
-
-.card-img {
-    border-radius: 8px;
-    width: 60%; /* sau o valoare fixă, ex: 250px */
-    display: block;
-    margin: 0 auto;
-    margin-bottom: 60px;
-    
-}
-
-.card-img:hover {
-    box-shadow: 0 4px 12px rgba(80, 115, 160, 0.4);
-}
-
-h1 {
-    font-family: 'Gotham', sans-serif;
-    font-size: 24px;
-    color: #e6edf3;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.card-link {
-    color: #6cb0f0;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.card-link:hover {
-    text-decoration: underline;
+* {
+    box-sizing: border-box;
 }
 
 body {
-    background: linear-gradient(to right, #08090c, #131722);
+    background: linear-gradient(135deg, #08090c 0%, #131722 100%);
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    font-family: 'Segoe UI', Roboto, 'Gotham', sans-serif;
+    color: #cfd6df;
+}
+
+h1 {
+    font-size: 26px;
+    color: #e6edf3;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 24px;
+    letter-spacing: 0.5px;
+}
+
+/* Card Principal Container */
+.card {
+    max-width: 960px;
+    margin: 0 auto 40px auto;
+    padding: 24px;
+    background-color: #0e1217;
+    border: 1px solid #283344;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
+    display: flex;
+    gap: 24px;
+    align-items: stretch;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.card:hover {
+    border-color: #3b4c63;
+    box-shadow: 0 10px 28px rgba(60, 85, 120, 0.35);
+}
+
+/* Coloana Stânga: Căsuțele 1, 2, 4 */
+.card-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    justify-content: space-between;
+}
+
+/* Stil general căsuțe */
+.box {
+    background-color: #141922;
+    border: 1px solid #222b3a;
+    border-radius: 8px;
+    padding: 18px;
+}
+
+/* 1. Căsuța Text */
+.card-text h2 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: 22px;
+    color: #f0f6fc;
+}
+
+.card-text p {
+    margin: 6px 0;
+    font-size: 15px;
+    color: #a9b5c4;
+    line-height: 1.5;
+}
+
+.poster-link-row {
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+/* Buton link conform cerinței temei */
+.card-btn {
+    display: inline-block;
+    padding: 7px 16px;
+    background-color: #1e2837;
+    color: #6cb0f0;
+    border: 1px solid #3d5272;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13px;
+    transition: all 0.2s ease-in-out;
+}
+
+.card-btn:hover {
+    background-color: #2e3e57;
+    color: #ffffff;
+    border-color: #6cb0f0;
+    box-shadow: 0 0 10px rgba(108, 176, 240, 0.35);
+    transform: translateY(-1px);
+}
+
+/* 2. Căsuța Player dedesubt */
+.card-player {
+    padding: 14px 18px;
+}
+
+.box-title {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: #8b949e;
+    margin-bottom: 10px;
+}
+
+.card-player iframe {
+    width: 100%;
+    height: 140px;
+    border-radius: 6px;
+    border: none;
+    display: block;
+    margin: 0;
+}
+
+/* 4. Block rezervat pentru embed Wiki The Crow 1994 */
+.card-wiki {
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.wiki-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    background-color: #19212d;
+    border-bottom: 1px solid #283344;
+}
+
+.wiki-badge {
+    font-size: 11px;
+    background-color: #2b394d;
+    color: #e6edf3;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.wiki-title {
+    font-size: 13px;
+    color: #cfd6df;
+    font-weight: 500;
+}
+
+.wiki-link {
+    font-size: 12px;
+    color: #6cb0f0;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.wiki-link:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.wiki-iframe {
+    width: 100%;
+    height: 220px;
+    border: none;
+    background-color: #ffffff;
+    display: block;
+}
+
+/* Coloana Dreapta: 3. Posterul sau img dreapta */
+.card-right {
+    width: 340px;
+    flex-shrink: 0;
+    display: flex;
+}
+
+.card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #222b3a;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: block;
+}
+
+.card-img:hover {
+    box-shadow: 0 8px 22px rgba(60, 85, 120, 0.45);
+    transform: scale(1.01);
+}
+
+/* Responsivitate pentru ecrane mici */
+@media (max-width: 820px) {
+    .card {
+        flex-direction: column;
+        max-width: 520px;
+        padding: 18px;
+    }
+
+    .card-right {
+        width: 100%;
+    }
+
+    .card-img {
+        height: 480px;
+    }
 }

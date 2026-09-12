@@ -10,15 +10,50 @@
 <body>
 
 <h1>Just recently got to be a The Crow fan</h1>
+
 <div class="card">
-    <div class="card-content">
-        <h2>My name is Ionut</h2>
-        <p>And i just discovered The Crow movie. Amazing!</p>
-        <p>Fan-made poster link: <a class="card-link" href="https://www.example.com" target="_blank">From Reddit</a></p>
+    <!-- COLOANA STÂNGA: Căsuțele 1, 2, 4 -->
+    <div class="card-left">
+        <!-- 1. Text -->
+        <div class="box card-text">
+            <h2>My name is Ionut</h2>
+            <p>And i just discovered The Crow movie. Amazing!</p>
+            <p class="poster-link-row">Fan-made poster link: <a class="card-btn" href="https://www.example.com" target="_blank">From Reddit</a></p>
+        </div>
+
+        <!-- 2. Player dedesubt -->
+        <div class="box card-player">
+            <span class="box-title">Soundtrack Player</span>
+            <iframe 
+                width="100%" 
+                height="150" 
+                scrolling="no" 
+                frameborder="no" 
+                allow="autoplay" 
+                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/9336442&color=%23111111&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false">
+            </iframe>
+        </div>
+
+        <!-- 4. Block rezervat pentru embed wiki The Crow 1994 -->
+        <div class="box card-wiki">
+            <div class="wiki-header">
+                <span class="wiki-badge">Wikipedia Embed</span>
+                <span class="wiki-title">The Crow (1994 film)</span>
+                <a href="https://en.wikipedia.org/wiki/The_Crow_(1994_film)" target="_blank" class="wiki-link" title="Open Wikipedia page">Open Wiki ↗</a>
+            </div>
+            <iframe 
+                class="wiki-iframe" 
+                src="https://en.m.wikipedia.org/wiki/The_Crow_(1994_film)" 
+                title="The Crow 1994 Wikipedia Embed"
+                loading="lazy">
+            </iframe>
+        </div>
     </div>
 
-    <img src="./assets/the-crow-1994-01.webp" alt="The Crow" class="card-img">
-   
+    <!-- COLOANA DREAPTA: 3. Posterul sau img dreapta -->
+    <div class="card-right">
+        <img src="./assets/the-crow-1994-01.webp" alt="The Crow" class="card-img">
+    </div>
 </div>
 
 </body>
