@@ -18,6 +18,8 @@ h1 {
     margin-top: 10px;
     margin-bottom: 24px;
     letter-spacing: 0.5px;
+    font-family: 'Cinzel Decorative', serif;
+    letter-spacing: 1.5px;
 }
 
 /* Card Principal Container */
@@ -63,6 +65,8 @@ h1 {
     margin-bottom: 8px;
     font-size: 22px;
     color: #f0f6fc;
+    font-family: 'IM Fell English SC', serif;
+    letter-spacing: 1px;
 }
 
 .card-text p {
@@ -124,6 +128,40 @@ h1 {
     border: none;
     display: block;
     margin: 0;
+}
+
+/* Control volum pentru SoundCloud */
+.volume-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid #222b3a;
+}
+
+.volume-icon {
+    font-size: 14px;
+    user-select: none;
+}
+
+#volume-slider {
+    flex: 1;
+    height: 6px;
+    background: #222b3a;
+    border-radius: 3px;
+    outline: none;
+    accent-color: #6cb0f0;
+    cursor: pointer;
+}
+
+#volume-label {
+    font-size: 12px;
+    color: #8b949e;
+    min-width: 36px;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
 }
 
 /* 4. Block rezervat pentru embed Wiki The Crow 1994 */

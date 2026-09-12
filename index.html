@@ -6,6 +6,9 @@
     <title>Card Profil Tema 22 din CSS Properties</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="./assets/the-crow-1994-01.webp" type="image/webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -17,14 +20,15 @@
         <!-- 1. Text -->
         <div class="box card-text">
             <h2>My name is Ionut</h2>
-            <p>And i just discovered The Crow movie. Amazing!</p>
+            <p>And i just discovered The Crow movie. Amazing, sad, cool, gothic story and stories!</p>
             <p class="poster-link-row">Fan-made poster link: <a class="card-btn" href="https://www.example.com" target="_blank">From Reddit</a></p>
         </div>
 
         <!-- 2. Player dedesubt -->
         <div class="box card-player">
-            <span class="box-title">Soundtrack Player</span>
+            <span class="box-title">Tribute song for this masterpiece ཐི ྐ❤︎ ཋྀ</span>
             <iframe 
+                id="sc-widget"
                 width="100%" 
                 height="150" 
                 scrolling="no" 
@@ -32,12 +36,17 @@
                 allow="autoplay" 
                 src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/9336442&color=%23111111&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false">
             </iframe>
+            <div class="volume-container">
+                <span class="volume-icon">🔊</span>
+                <input type="range" id="volume-slider" min="0" max="100" value="70">
+                <span id="volume-label">70%</span>
+            </div>
         </div>
 
         <!-- 4. Block rezervat pentru embed wiki The Crow 1994 -->
         <div class="box card-wiki">
             <div class="wiki-header">
-                <span class="wiki-badge">Wikipedia Embed</span>
+                <span class="wiki-badge">Wiki, lots of stuff happened</span>
                 <span class="wiki-title">The Crow (1994 film)</span>
                 <a href="https://en.wikipedia.org/wiki/The_Crow_(1994_film)" target="_blank" class="wiki-link" title="Open Wikipedia page">Open Wiki ↗</a>
             </div>
@@ -56,5 +65,7 @@
     </div>
 </div>
 
+<script src="https://w.soundcloud.com/player/api.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
