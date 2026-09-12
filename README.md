@@ -3,10 +3,10 @@
 Creează un card de profil folosind HTML și CSS.
 
 Adaugă o imagine, un titlu, o descriere și un link. <br>
-Setează familia și dimensiunea fontului.
-Adaugă fundal, padding, border și colțuri rotunjite.
-Limitează cardul cu max-width.
-Transformă linkul într-un buton și adaugă o stare :hover.
+Setează familia și dimensiunea fontului.<br>
+Adaugă fundal, padding, border și colțuri rotunjite.<br>
+Limitează cardul cu max-width.<br>
+Transformă linkul într-un buton și adaugă o stare :hover.<br>
 
 Rezultat:
 
