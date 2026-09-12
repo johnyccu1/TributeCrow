@@ -76,12 +76,11 @@ h1 {
     line-height: 1.5;
 }
 
-.poster-link-row {
-    margin-top: 12px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex-wrap: wrap;
+.poster-note {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #8b949e;
+    font-style: italic;
 }
 
 /* Buton link conform cerinței temei */
@@ -199,16 +198,22 @@ h1 {
 }
 
 .wiki-link {
-    font-size: 12px;
+    font-size: 11px;
     color: #6cb0f0;
     text-decoration: none;
     font-weight: 600;
-    transition: color 0.2s ease;
+    padding: 3px 8px;
+    background-color: #243042;
+    border: 1px solid #3d5272;
+    border-radius: 4px;
+    transition: all 0.2s ease;
 }
 
 .wiki-link:hover {
+    background-color: #354763;
     color: #ffffff;
-    text-decoration: underline;
+    border-color: #6cb0f0;
+    box-shadow: 0 0 8px rgba(108, 176, 240, 0.3);
 }
 
 .wiki-iframe {
@@ -226,6 +231,16 @@ h1 {
     display: flex;
 }
 
+.poster-link {
+    position: relative; /* Devine reper pentru eticheta de credit pozitionata absolute */
+    width: 100%;
+    height: 100%;
+    display: block;
+    text-decoration: none;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
 .card-img {
     width: 100%;
     height: 100%;
@@ -237,9 +252,34 @@ h1 {
     display: block;
 }
 
-.card-img:hover {
+.poster-link:hover .card-img {
     box-shadow: 0 8px 22px rgba(60, 85, 120, 0.45);
     transform: scale(1.01);
+}
+
+/* Eticheta discreta de credit peste imagine */
+.poster-credit {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+    background-color: rgba(14, 18, 23, 0.85);
+    border: 1px solid rgba(40, 51, 68, 0.9);
+    color: #cfd6df;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 7px 10px;
+    border-radius: 6px;
+    text-align: center;
+    backdrop-filter: blur(4px);
+    transition: all 0.2s ease-in-out;
+}
+
+.poster-link:hover .poster-credit {
+    background-color: rgba(30, 40, 55, 0.95);
+    color: #6cb0f0;
+    border-color: #6cb0f0;
+    box-shadow: 0 0 10px rgba(108, 176, 240, 0.3);
 }
 
 /* Responsivitate pentru ecrane mici */
