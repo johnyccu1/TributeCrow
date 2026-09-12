@@ -1,0 +1,55 @@
+.card {
+    max-width: 65%;
+    border: 1px solid #283344;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 20px auto;
+    color: #cfd6df;
+    background-color: #0e1217;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+}
+
+.card:hover {
+    box-shadow: 0 8px 20px rgba(60, 85, 120, 0.35);
+}
+
+.card-content {
+    font-family: 'Gotham', sans-serif;
+    font-size: 16px;
+    padding: 16px;
+}
+
+.card-img {
+    border-radius: 8px;
+    width: 60%; /* sau o valoare fixă, ex: 250px */
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 60px;
+    
+}
+
+.card-img:hover {
+    box-shadow: 0 4px 12px rgba(80, 115, 160, 0.4);
+}
+
+h1 {
+    font-family: 'Gotham', sans-serif;
+    font-size: 24px;
+    color: #e6edf3;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.card-link {
+    color: #6cb0f0;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.card-link:hover {
+    text-decoration: underline;
+}
+
+body {
+    background: linear-gradient(to right, #08090c, #131722);
+}
