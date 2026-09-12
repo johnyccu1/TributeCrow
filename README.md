@@ -10,5 +10,6 @@ Transformă linkul într-un buton și adaugă o stare :hover.<br>
 
 Rezultat:
 
-<img width="1173" height="911" alt="image" src="https://github.com/user-attachments/assets/25bde283-5793-4557-a720-f22355723c9e" />
+<img width="1087" height="903" alt="image" src="https://github.com/user-attachments/assets/f62c2046-1be7-47d6-9d9c-0df538f9c938" />
+
 
