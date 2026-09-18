@@ -7,56 +7,76 @@
 // (iframe-ul, slider-ul, eticheta) exista deja cand incercam sa le selectam prin JS.
 document.addEventListener('DOMContentLoaded', () => {
 
-    // 1. document.getElementById('id') cauta in HTML elementul unic cu id-ul specificat:
-    // Selectam iframe-ul care gazduieste playerul SoundCloud:
+    // 1. Selectam elementele din pagina:
     const iframe = document.getElementById('sc-widget');
-
-    // Selectam input-ul de tip 'range' (cursorul glisant) prin care utilizatorul alege volumul:
     const volumeSlider = document.getElementById('volume-slider');
-
-    // Selectam span-ul in care scriem textul procentual (ex: "70%"):
     const volumeLabel = document.getElementById('volume-label');
 
-    // 2. Clauza de siguranta (Guard Clause):
-    // Verificam daca:
-    // - !iframe: iframe-ul lipseste cumva din pagina;
-    // - !volumeSlider: slider-ul nu a fost gasit;
-    // - typeof SC === 'undefined': scriptul extern 'api.js' de la SoundCloud nu s-a incarcat
-    //   (de exemplu, din cauza unui adblocker sau lipsa conexiunii la internet).
-    // Daca oricare lipseste, oprim functia cu 'return' pentru a preveni erori in consola.
-    if (!iframe || !volumeSlider || typeof SC === 'undefined') {
+    // Daca elementele HTML de baza lipsesc din DOM, oprim executia:
+    if (!iframe || !volumeSlider) {
         return;
     }
 
-    // 3. Initializam obiectul Widget din biblioteca SoundCloud:
-    // SC.Widget(iframe) creeaza o punte de comunicare sigura (prin postMessage)
-    // intre pagina noastra si playerul SoundCloud aflat in interiorul iframe-ului.
-    const widget = SC.Widget(iframe);
+    let widget = null;
 
-    // 4. widget.bind asculta un eveniment intern trimis de playerul SoundCloud:
-    // 'SC.Widget.Events.READY' se declanseaza cand playerul a terminat de incarcat audio engine-ul
-    // si este gata sa primeasca comenzi (play, volum, pauza etc.).
-    widget.bind(SC.Widget.Events.READY, () => {
-        // volumeSlider.value preia valoarea initiala setata in HTML (in cazul nostru: 70).
-        // widget.setVolume(valoare) accepta numere intre 0 (mut) si 100 (volum maxim).
-        widget.setVolume(volumeSlider.value);
-    });
-
-    // 5. Adaugam un ascultator de evenimente pe slider:
-    // Evenimentul 'input' se declanseaza continuu, in timp real, in fiecare milisecunda
-    // in care utilizatorul trage cursorul (spre deosebire de 'change' care se declanseaza
-    // abia cand utilizatorul da drumul la click).
+    // 2. Ascultatorul pentru slider este activat IMEDIAT:
+    // Chiar daca scriptul SoundCloud are intarziere pe retea, slider-ul si textul
+    // procentual (ex: "70%") vor reactiona instant la miscarea cursorului.
     volumeSlider.addEventListener('input', (event) => {
-        // event.target este elementul care a declansat evenimentul (slider-ul).
-        // .value este valoarea curenta a cursorului (intre 0 si 100).
         const val = event.target.value;
 
-        // textContent actualizeaza textul din span cu valoarea noua urmata de simbolul '%':
-        volumeLabel.textContent = `${val}%`;
+        if (volumeLabel) {
+            volumeLabel.textContent = `${val}%`;
+        }
 
-        // Transmitem in timp real noul nivel de volum catre playerul SoundCloud:
-        widget.setVolume(val);
+        // Daca widget-ul SoundCloud a fost deja initializat, actualizam volumul audio:
+        if (widget) {
+            try {
+                widget.setVolume(val);
+            } catch (err) {
+                console.warn('Nu s-a putut trimite volumul catre SoundCloud:', err);
+            }
+        }
     });
+
+    // 3. Functie de initializare sigura a playerului SoundCloud:
+    function initSoundCloud() {
+        if (typeof SC === 'undefined' || !SC.Widget) {
+            return false;
+        }
+
+        try {
+            widget = SC.Widget(iframe);
+
+            // Setam volumul cand playerul este gata initial:
+            widget.bind(SC.Widget.Events.READY, () => {
+                widget.setVolume(volumeSlider.value);
+            });
+
+            // IMPORTANT: Multe browsere reseteaza volumul la 100% cand porneste piesa.
+            // Ascultam si evenimentul PLAY pentru a reaplica valoarea aleasa pe slider:
+            widget.bind(SC.Widget.Events.PLAY, () => {
+                widget.setVolume(volumeSlider.value);
+            });
+
+            return true;
+        } catch (e) {
+            console.error('Eroare la initializarea SoundCloud Widget:', e);
+            return false;
+        }
+    }
+
+    // 4. Incercam initializarea imediata; daca biblioteca api.js intarzie pe retea,
+    // reincercam la intervale scurte (polling) pana cand SC devine disponibil:
+    if (!initSoundCloud()) {
+        let attempts = 0;
+        const checkInterval = setInterval(() => {
+            attempts++;
+            if (initSoundCloud() || attempts >= 20) {
+                clearInterval(checkInterval);
+            }
+        }, 200);
+    }
 });
 
 /*
